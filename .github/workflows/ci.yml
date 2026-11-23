@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"   # weekly, to catch a new core release that breaks an example
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked
+      - name: Type-check the examples against the openvireo stubs
+        run: uv run pyright
+      - name: Import every example
+        run: |
+          for f in examples/[a-z]*.py; do
+            uv run python -c "import runpy, sys; sys.path.insert(0, 'examples'); runpy.run_path('$f', run_name='check')"
+          done

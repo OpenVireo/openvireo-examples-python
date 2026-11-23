@@ -1,0 +1,21 @@
+[project]
+name = "openvireo-examples"
+version = "1.0.0"
+description = "Runnable examples for the OpenVireo Python binding"
+requires-python = ">=3.10"
+dependencies = ["openvireo[keyring]==1.0.0"]
+
+[tool.uv]
+package = false
+find-links = ["https://github.com/openvireo/openvireo-core/releases/expanded_assets/v1.0.0"]
+
+[dependency-groups]
+dev = ["pyright==1.1.408"]
+
+[tool.pyright]
+include = ["examples"]
+extraPaths = ["examples"]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.10"
+typeCheckingMode = "standard"
