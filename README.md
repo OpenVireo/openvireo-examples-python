@@ -9,7 +9,7 @@ Examples in other languages: [TypeScript](https://github.com/openvireo/openvireo
 ## Run them
 
 You need Python 3.10 or newer and [uv](https://docs.astral.sh/uv/). `uv sync` installs `openvireo`
-1.0.0 from the wheels on the [core release](https://github.com/openvireo/openvireo-core/releases/tag/v1.0.0)
+1.1.0 from the wheels on the [core release](https://github.com/openvireo/openvireo-core/releases/tag/v1.1.0)
 (it isn't on PyPI yet).
 
 ```sh
@@ -34,8 +34,8 @@ uv run examples/vaults_and_sharing.py
 With pip instead of uv:
 
 ```sh
-pip install "openvireo[keyring]==1.0.0" \
-  --find-links https://github.com/openvireo/openvireo-core/releases/expanded_assets/v1.0.0
+pip install "openvireo[keyring]==1.1.0" \
+  --find-links https://github.com/openvireo/openvireo-core/releases/expanded_assets/v1.1.0
 python examples/first_program.py
 ```
 
