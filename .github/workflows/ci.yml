@@ -28,3 +28,5 @@ jobs:
           for f in examples/[a-z]*.py; do
             uv run python -c "import runpy, sys; sys.path.insert(0, 'examples'); runpy.run_path('$f', run_name='check')"
           done
+      - name: Load the binding and reach the account server
+        run: uv run examples/check.py
